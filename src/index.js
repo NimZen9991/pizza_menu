@@ -72,6 +72,14 @@ function Menu() {
 }
 
 function Footer2() {
+  const time = new Date().getHours();
+  const openHours = 8;
+  const closeHours = 23;
+  const isOpen = time >= openHours && time <= closeHours;
+  console.log(isOpen);
+
+  // if (time >= openHours && time <= closeHours) alert("We're currently open!!!");
+  // else alert("Sorry we're closed for today !");
   return (
     <footer>
       {new Date().toLocaleTimeString()}. We're currently Open!!!! React with
@@ -82,7 +90,7 @@ function Footer2() {
 function Pizza() {
   return (
     <div>
-      <img src="pizzas/spinaci.jpg" alt="Pizza spinaci" />
+      <img src="pizzas/prosciutto.jpg" alt="Pizza spinaci" />
       <h2>Pizza Spinaci</h2>
       <p>Tomato, mozarella, spinach, and ricotta cheese</p>;
     </div>
