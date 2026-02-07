@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import "./index.css";
 
 const pizzaData = [
   {
@@ -48,7 +49,7 @@ const pizzaData = [
 
 function App() {
   return (
-    <div>
+    <div className="container">
       <Header />
       <Menu />
       <Footer2 />
@@ -57,16 +58,45 @@ function App() {
 }
 
 function Header() {
-  return <h1>Pizza Reacts Yumm Co.</h1>;
+  // style={{ color: "red", fontSize: "55px", textTransform: "uppercase" }}>
+  //     Pizza Reacts Yumm Co.
+  const style = {};
+  return (
+    <header className="header">
+      <h1 style={style}>Pizza Reacts Yumm Co.</h1>
+    </header>
+  );
 }
 
 function Menu() {
   return (
-    <div>
-      <h1> Our Menu</h1>
-      <Pizza />
-      <Pizza />
-      <Pizza />
+    <main className="menu">
+      <h2> Our menu</h2>
+      <Pizza
+        name="Pizza Spinaci"
+        ingredients="Tomato, mozarella, spinach, and ricotta cheese"
+        photoName="pizzas/prosciutto.jpg"
+        price={10}
+      />
+
+      <Pizza
+        name="Pizza Funghi"
+        ingredients="Tomato, mushroooms"
+        price={20}
+        photoName="pizzas/funghi.jpg"
+      />
+    </main>
+  );
+}
+
+function Pizza(props) {
+  return (
+    <div className="pizza">
+      <img src={props.photoName} alt={props.name} />
+      <div>
+        <h3>{props.name}</h3>
+        <p>{props.ingredients}</p>;<span>{props.price + 7}</span>
+      </div>
     </div>
   );
 }
@@ -81,21 +111,13 @@ function Footer2() {
   // if (time >= openHours && time <= closeHours) alert("We're currently open!!!");
   // else alert("Sorry we're closed for today !");
   return (
-    <footer>
+    <footer className="footer">
       {new Date().toLocaleTimeString()}. We're currently Open!!!! React with
       taste...
     </footer>
   );
 }
-function Pizza() {
-  return (
-    <div>
-      <img src="pizzas/prosciutto.jpg" alt="Pizza spinaci" />
-      <h2>Pizza Spinaci</h2>
-      <p>Tomato, mozarella, spinach, and ricotta cheese</p>;
-    </div>
-  );
-}
+
 // React v18
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
